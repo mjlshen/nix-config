@@ -1,0 +1,20 @@
+" Use intelligent indenting based on filetype
+filetype indent plugin on
+
+" Syntax highlighting
+syntax on
+
+" Raise a dialog to ask if you want to save a changed file instead of failing
+set confirm
+
+" Line numbers
+set number
+
+" Indentation settings
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set backspace=indent,eol,start
+
+" Remap <esc> to jj so get around touchbar
+inoremap jj <Esc>
