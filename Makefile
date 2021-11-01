@@ -100,6 +100,10 @@ config-nixos:
 		--exclude='environment' \
 		$(HOME)/.ssh/ $(NIXUSER)@$(NIXADDR):~/.ssh
 
+	# Default to headless
+	VBoxManage modifyvm $(NIXVMNAME) \
+		--defaultfrontend headless
+
 	ssh -p $(NIXPORT) $(NIXUSER)@$(NIXADDR) " \
 		sudo reboot; \
 	"
