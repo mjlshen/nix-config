@@ -8,14 +8,18 @@
     '';
   };
 
-  # boot.kernelPackages = pkgs.linuxPackages_5_14;
-
+  # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "dev";
-  networking.useDHCP = false;
-  networking.interfaces.enp0s3.useDHCP = true;
+  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+  # Per-interface useDHCP will be mandatory in the future, so this generated config
+  # replicates the default behaviour.
+  networking = {
+    hostName = "dev";
+    useDHCP = false;
+    interfaces.enp0s3.useDHCP = true;
+  };
 
   # We expect to run the VM on hidpi machines.
   hardware.video.hidpi.enable = true;
@@ -29,7 +33,6 @@
     gnumake
     killall
     niv
-    rxvt_unicode
   ];
   
   services.openssh.enable = true;
