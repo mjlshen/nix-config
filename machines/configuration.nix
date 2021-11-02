@@ -21,6 +21,8 @@
     interfaces.enp0s3.useDHCP = true;
   };
 
+  virtualisation.docker.enable = true;
+
   # We expect to run the VM on hidpi machines.
   hardware.video.hidpi.enable = true;
 

@@ -4,7 +4,7 @@
   users.users.mshen = {
     isNormalUser = true;
     home = "/home/mshen";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "docker" "wheel" ];
     shell = pkgs.zsh;
     hashedPassword = "$6$9A.1.dhVK$rg23gTj.7wM8rmydZgfTpgRHKApL1RllplbNhuTyn3QDivyx2Wj0bIPekwB5QrjwXIWOXmdh5AIddhE4EtPoY1";
     openssh.authorizedKeys.keys = [

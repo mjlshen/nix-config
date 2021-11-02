@@ -11,6 +11,7 @@ let sources = import ../../nix/sources.nix; in {
   home.packages = with pkgs; [
     go
     gopls
+    kubectl
     tree
     watch
   ];
