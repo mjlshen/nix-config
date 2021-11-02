@@ -12,6 +12,7 @@ let sources = import ../../nix/sources.nix; in {
     go
     gopls
     kubectl
+    minikube
     tree
     watch
   ];
@@ -68,6 +69,16 @@ let sources = import ../../nix/sources.nix; in {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+
+    initExtra = ''
+      # fish-like history searches
+      bindkey '\e[A' history-beginning-search-backward
+      bindkey '\e[B' history-beginning-search-forward
+
+      # kubectl autocompletion zsh
+      source <(kubectl completion zsh)
+      complete -F __start_kubectl k
+    '';
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
@@ -92,6 +103,11 @@ let sources = import ../../nix/sources.nix; in {
         };
       }
     ];
+
+    shellAliases = {
+      gst = "git status -s";
+      k = "kubectl";
+    };
   };
 
   #---------------------------------------------------------------------
