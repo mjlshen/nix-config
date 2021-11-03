@@ -21,3 +21,6 @@ inoremap jj <Esc>
 
 " Use a thinner line for indentLine
 let g:indentLine_char = '⦙'
+
+" Use popup windows for godoc
+let g:go_doc_popup_window = 1

@@ -9,7 +9,6 @@ let sources = import ../../nix/sources.nix; in {
   # per-project flakes sourced with direnv and nix-shell, so this is
   # not a huge list.
   home.packages = with pkgs; [
-    go
     gopls
     kubectl
     minikube
@@ -46,6 +45,11 @@ let sources = import ../../nix/sources.nix; in {
       color.ui = true;
       init.defaultBranch = "main";
     };
+  };
+
+  programs.go = {
+    enable = true;
+    goPath = "go";
   };
 
   programs.gpg.enable = true;
