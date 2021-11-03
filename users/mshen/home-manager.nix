@@ -12,6 +12,15 @@ let
     };
     buildPhase = ":";
   };
+  vim-colors-solarized = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-colors-solarized";
+    src = pkgs.fetchFromGitHub {
+      owner = "altercation";
+      repo = "vim-colors-solarized";
+      rev = "528a59f26d12278698bb946f8fb82a63711eec21";
+      sha256 = "sha256-obLvaW7ulNr6dkMcMe4mCs3ROnz4eTnyfspDHVqloxU=";
+    };
+  };
 
 in {
   #---------------------------------------------------------------------
@@ -97,6 +106,7 @@ in {
       completor
       indentLine
       vim-go
+      vim-colors-solarized
     ];
     extraConfig = (builtins.readFile ./vimrc);
   };

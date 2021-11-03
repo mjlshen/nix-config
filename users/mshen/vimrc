@@ -1,8 +1,10 @@
 " Use intelligent indenting based on filetype
 filetype indent plugin on
 
-" Syntax highlighting
+" Syntax highlighting and Solarized Dark
 syntax on
+set background=dark
+colorscheme solarized
 
 " Raise a dialog to ask if you want to save a changed file instead of failing
 set confirm
@@ -25,8 +27,8 @@ let g:indentLine_char = '⦙'
 " Use popup windows for godoc
 let g:go_doc_popup_window = 1
 
-" Use TAB to trigger an autocompletion
-inoremap <expr> <Tab> pumvisible() ? "<C-N>" : "<C-R>=completor#do('complete')<CR>"
+" Show a tab as 4 spaces with vim-go
+ au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
 
 " Cycle through completion options with TAB/Shift+TAB
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
