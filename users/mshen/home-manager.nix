@@ -1,6 +1,19 @@
 { config, lib, pkgs, ... }:
 
-let sources = import ../../nix/sources.nix; in {
+let
+  completor = pkgs.vimUtils.buildVimPlugin {
+    name = "completor";
+    # https://github.com/NixOS/nix/issues/1880#issuecomment-953678160
+    src = pkgs.fetchFromGitHub {
+      owner = "maralla";
+      repo = "completor.vim";
+      rev = "6ca5f498afe5fe9c659751aef54ef7f2fdc62414";
+      sha256 = "sha256-XwCN6fcF6A8FxV6aWEs0DpJFZECN6xWtuEEYH9W9WSs=";
+    };
+    buildPhase = ":";
+  };
+
+in {
   #---------------------------------------------------------------------
   # Packages
   #---------------------------------------------------------------------
@@ -12,6 +25,7 @@ let sources = import ../../nix/sources.nix; in {
     gopls
     kubectl
     minikube
+    python39
     tree
     watch
   ];
@@ -80,6 +94,7 @@ let sources = import ../../nix/sources.nix; in {
     enable = true;
 
     plugins = with pkgs.vimPlugins; [
+      completor
       indentLine
       vim-go
     ];

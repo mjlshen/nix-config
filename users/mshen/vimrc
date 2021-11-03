@@ -24,3 +24,15 @@ let g:indentLine_char = '⦙'
 
 " Use popup windows for godoc
 let g:go_doc_popup_window = 1
+
+" Use TAB to trigger an autocompletion
+inoremap <expr> <Tab> pumvisible() ? "<C-N>" : "<C-R>=completor#do('complete')<CR>"
+
+" Cycle through completion options with TAB/Shift+TAB
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Configure maralla/completor to use gopls for autocompletion
+let g:completor_auto_trigger = 1
+let g:completor_filetype_map = {}
+let g:completor_filetype_map.go = {'ft': 'lsp', 'cmd': 'gopls -remote=auto'}
