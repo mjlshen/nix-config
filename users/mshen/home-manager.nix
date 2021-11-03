@@ -62,7 +62,10 @@ let sources = import ../../nix/sources.nix; in {
   programs.vim = {
     enable = true;
 
-    plugins = with pkgs.vimPlugins; [ vim-go ];
+    plugins = with pkgs.vimPlugins; [
+      indentLine
+      vim-go
+    ];
     extraConfig = (builtins.readFile ./vimrc);
   };
 
