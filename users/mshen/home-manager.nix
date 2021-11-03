@@ -50,7 +50,20 @@ let sources = import ../../nix/sources.nix; in {
 
   programs.gpg.enable = true;
 
-  programs.jq.enable = true;
+  programs.jq = {
+    enable = true;
+
+    # Default jq color scheme, nixpkgs default is too light
+    colors = {
+      null = "1;30";
+      false = "0;39";
+      true = "0;39";
+      numbers = "0;39";
+      strings = "0;32";
+      arrays = "1;39";
+      objects = "1;39";
+    };
+  };
 
   programs.tmux = {
     enable = true;
